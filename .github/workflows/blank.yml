@@ -28,7 +28,20 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: echo Hello, world!
-
+        
+  hello_world_job:
+    needs: build
+    runs-on: ubuntu-latest
+    name: A job to say hello
+    steps:
+      - name: Hello world action step
+        id: hello
+        uses: Lloydcol/hello-world-javascript-action@v1.1
+        with:
+          who-to-greet: ''
+      # Use the output from the `hello` step
+      - name: Get the output time
+        run: echo "The time was ${{ steps.hello.outputs.time }}"
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
