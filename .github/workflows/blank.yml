@@ -38,7 +38,7 @@ jobs:
         id: hello
         uses: Lloydcol/hello-world-javascript-action@v1.1
         with:
-          who-to-greet: ${{ env.NAME }}
+          who-to-greet: ${{ vars.NAME }}
       # Use the output from the `hello` step
       - name: Get the output time
         run: echo "The time was ${{ steps.hello.outputs.time }}"
